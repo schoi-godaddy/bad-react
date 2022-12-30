@@ -61,8 +61,8 @@ class App extends React.Component<{}, AppState> {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <div>
-            <h1>Using dangerouslySetInnerHTML</h1>
-            <p style={{ color: "grey" }}>Hint - {`<img src="" onerror="alert('message');" />`}</p>
+            <h2>Using dangerouslySetInnerHTML</h2>
+            <p style={{ fontSize: "10px", color: "grey" }}>Hint - {`<img src="" onerror="alert('message');" />`}</p>
             <div>
               <input type="text" value={this.state.input} placeholder="Enter stuff" onChange={this.setInput} />
               <button onClick={this.setDisplayText}>Display</button>
@@ -70,8 +70,8 @@ class App extends React.Component<{}, AppState> {
             <div dangerouslySetInnerHTML={{ __html: this.state.displayText }} />
           </div>
           <div>
-            <h1>Using eval</h1>
-            <p style={{ color: "grey" }}>Hint - alert('1')</p>
+            <h2>Using eval</h2>
+            <p style={{ fontSize: "10px", color: "grey" }}>Hint - alert('1')</p>
             <div>
               <input
                 type="text"
@@ -91,8 +91,8 @@ class App extends React.Component<{}, AppState> {
             </div>
           </div>
           <div>
-            <h1>Using href</h1>
-            <p style={{ color: "grey" }}>Hint - javascript: alert('1')</p>
+            <h2>Using href</h2>
+            <p style={{ fontSize: "10px", color: "grey" }}>Hint - javascript: alert('1')</p>
             <input
               type="text"
               name="link"
