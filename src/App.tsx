@@ -7,6 +7,8 @@ interface AppState {
   displayText: string;
   firstName: string;
   lastName: string;
+  link: string;
+  displayLink: string;
 }
 
 class App extends React.Component<{}, AppState> {
@@ -19,6 +21,9 @@ class App extends React.Component<{}, AppState> {
 
       firstName: "",
       lastName: "",
+
+      link: "",
+      displayLink: "",
     };
   }
 
@@ -42,6 +47,14 @@ class App extends React.Component<{}, AppState> {
     eval(this.state.firstName + this.state.lastName);
   };
 
+  handleLinkchange = (e) => {
+    this.setState({ link: e.target.value });
+  };
+
+  handleLinkShow = () => {
+    this.setState({ displayLink: this.state.link });
+  };
+
   render() {
     return (
       <div className="App">
@@ -49,6 +62,7 @@ class App extends React.Component<{}, AppState> {
           <img src={logo} className="App-logo" alt="logo" />
           <div>
             <h1>Using dangerouslySetInnerHTML</h1>
+            <p style={{ color: "grey" }}>Hint - {`<img src="" onerror="alert('message');" />`}</p>
             <div>
               <input type="text" value={this.state.input} placeholder="Enter stuff" onChange={this.setInput} />
               <button onClick={this.setDisplayText}>Display</button>
@@ -57,6 +71,7 @@ class App extends React.Component<{}, AppState> {
           </div>
           <div>
             <h1>Using eval</h1>
+            <p style={{ color: "grey" }}>Hint - alert('1')</p>
             <div>
               <input
                 type="text"
@@ -72,11 +87,25 @@ class App extends React.Component<{}, AppState> {
                 value={this.state.lastName}
                 onChange={this.handleNameChange}
               />
-              <button onClick={this.handleSubmit}>Submit</button>{" "}
+              <button onClick={this.handleSubmit}>Submit</button>
             </div>
           </div>
           <div>
             <h1>Using href</h1>
+            <p style={{ color: "grey" }}>Hint - javascript: alert('1')</p>
+            <input
+              type="text"
+              name="link"
+              placeholder="google.com"
+              value={this.state.link}
+              onChange={this.handleLinkchange}
+            />
+            <button onClick={this.handleLinkShow}>Show Link</button>
+            <div>
+              <a href={this.state.displayLink} style={{ color: "white" }}>
+                {this.state.displayLink}
+              </a>
+            </div>
           </div>
         </header>
       </div>
